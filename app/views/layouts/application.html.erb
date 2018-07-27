@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>株式会社Crold Valieat Call System</title>
+
+    <meta charset="utf-8">
+    <!--　レスポンシブの定義　-->
+    <meta name="viewport" content="width=device-width, initial-scale=1,0">
+
+    <%= csrf_meta_tags %>
+
+    <link rel="stylesheet" href="application.scss">
+    <link rel="stylesheet" href="posts.scss">
+    <link rel="stylesheet" href="hauth.scss">
+    <link rel="stylesheet" href="dial.scsss">
+     <link rel="stylesheet" href="products.scss">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!--　ジャバスクリプト　-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+
+
+  <header>
+    <div class="container">
+      <div class="header-left">
+      <%= link_to '/posts' do %>
+        <%= image_tag("rogo.jpg", :class => "menu_icon") %>
+      <% end %>
+      </div>
+      <div class="header-right">
+        <%= link_to  'リスト検索', '/posts' %>
+         <% if user_signed_in? %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            <% else %>
+                <%= link_to 'ログイン', new_user_session_path %>
+            <% end %>
+      
+      </div>
+    </div>
+  </header>
+
+ <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <main>
+    
+  <%= yield %>
+    </main>
+  </body>
+</html>
+

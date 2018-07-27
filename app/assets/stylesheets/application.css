@@ -1,0 +1,191 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+
+ */
+
+/* posts/index ================================ */
+
+
+
+/*フォントの指定はなし*/
+a {
+  text-decoration: none;
+}
+
+
+
+                                                        /*ベース情報*/
+* {
+  box-sizing: border-box;
+}
+
+/*書体はヒラギノフォントを利用します。*/
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN";
+  width:100%;
+  background-color:rgba(242,242,225,1.0);   /*ベージュ*/
+}
+
+                                                    /*ヘッダーの始まり*/
+/*幅・位置の指定*/
+.container {
+  max-width: 1170px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/*ヘッダーのベース設定*/
+header {
+  height: 65px;
+  width: 100%;
+  background-color: rgba(0,94,94,1.0); 
+}
+
+/*ヘッダー内のロゴ指定*/
+.menu_icon {
+  height:65px;
+}
+
+/*ロゴは左へ*/
+.header-left {
+  float: left;
+}
+
+/*ヘッダーナビは右へ*/
+.header-right {
+  float: right;
+  margin-right: -25px;
+  font-size:15px;
+  text-shadow: 2px 3px 1px #000;
+}
+
+/*ヘッダーナビの位置設定*/
+.header-right a {
+  line-height: 65px;
+  padding: 0 15px;
+  color: white;
+  display: block;
+  float: left;
+  transition: all 0.5s;
+}
+
+/*ヘッダーの上にマウスを置くと色変化*/
+.header-right a:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+                                                                /*ヘッダーの終わり*/
+
+                                                        /*題名共通で記述しています。*/
+
+
+.heading {
+  padding-bottom: 20px;
+  color: #5f5d60;
+}
+
+.heading h2 {
+  font-weight: bold;
+  text-align:center;
+  font-size:30px;
+}
+
+.heading h3 {
+  font-weight: bold;
+  text-align:center;
+  font-size:24px;
+}
+
+/* ヘッダーのスパンカラー指定*/
+.heading span   {
+    color:red;
+    font-weight:bold;
+}
+
+
+
+                                                               /*メインのサイズ*/
+
+main{
+  margin-bottom:100px;
+  margin-top:80px
+}
+
+.error {
+    font-size:12px;
+    font-weight: bold;
+    color: tomato;
+}
+
+.command {
+   font-size:10px;
+}
+
+
+
+                 
+                                            /*センターテーブルに関する情報*/
+
+
+table , td, th {
+  border:8px #F2F2E1 solid;    /*ベージュ*/
+  border-collapse: collapse;
+  text-align:center;
+  font-weight:normal;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+caption {
+    font-weight:bold;
+    font-size:18px;
+}
+
+td, th {
+  padding: 10px;
+  height: 15px;
+  font-size:12px;
+}
+th {
+    /*ブルー*/
+  background-color: #2CA676; 
+  font-weight: bold;
+  width:300px;
+}
+td {
+    /*グレー*/
+  background-color: #e6ecf0;    
+  width:200px;
+}
+
+

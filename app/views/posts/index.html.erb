@@ -1,0 +1,95 @@
+  <div class="beige-wrapper">
+  
+            <div class="heading"><h2>Customer Search</h2>
+            </div>
+  </div>
+
+
+<!--検索機能実装-->
+      <table width = "80%">
+	     <tbody>
+	     <%= form_tag posts_path, :method => 'get' do %>
+           <tr>
+           		<th colspan = "2" >検索</th>
+           </tr>
+           <tr>
+                <th><%= label_tag :company, "会社名" %></th>
+           		<td><%= text_field_tag :company , params[:company] %></td>
+           </tr>
+           <tr>
+                <th><%= label_tag :owner, "代表者" %></th>
+           		<td><%= text_field_tag :owner , params[:owner] %></td>
+           </tr>
+           <tr>
+                <th><%= label_tag :tel, "電話番号" %></th>
+           		<td><%= text_field_tag :tel , params[:tel] %></td>
+           </tr>
+           <tr>
+                <th><%= label_tag :address, "住所" %></th>
+           		<td><%= text_field_tag :address , params[:address] %></td>
+           </tr>
+           <tr>
+				<td colspan = "2" ><%= submit_tag '検索' %></td>
+				<% end %>
+		    </tr>
+	    </tbody>
+      </table>
+            
+  <div class="green-wrapper">
+  
+            <div class="heading"><h2>Call List</h2>
+            </div>
+
+            <table>
+	            <tbody>
+		            <tr>
+			            <th>会社名</th>
+			            <th>代表者名</th>
+		                <th>電話番号</th>
+			            <th>住所</th>
+			            <th>編集/削除</th>
+		            </tr>
+    <% @posts.each do |post| %>
+		            <tr>
+			            <td><%= link_to post.company, post_path(post) %> </td>
+			            <td><%= link_to post.owner, post_path(post) %></td>
+			            <td><%= post.tel %></td>
+			            <td><%= post.address %></td>
+			            <td><%= link_to '編集', edit_post_path(post), class: 'command'%>
+			            <%= link_to '削除', 
+			            	post_path(post), 
+			            	method: :delete, 
+			            	class: 'command',
+			            	data: { confirm: '本当に削除しますか？'} %></td>
+			            	<% end %>
+		            </tr>
+		            <tr>
+		            	<td colspan = "5">
+		            	<%= paginate @posts %>
+		            	</td>
+		            </tr>
+	            </tbody>
+            </table>      
+  
+   
+   
+  </div>
+   <div class="beige-wrapper">
+  
+            <div class="heading"><h2>CSV Inport</h2>
+            </div>
+    
+   <%= form_tag import_posts_path, multipart: true do %>
+   <table>
+   	<tbody>
+   	   <tr>
+   			<th>CSVファイルインポート</th>
+   			<td><%= file_field_tag :file %></td>
+        	<td><%= submit_tag "インポート" %></td>
+        </tr>
+    </tbody>
+   </table>
+<% end %>
+    
+ </div>
+    

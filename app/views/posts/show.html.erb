@@ -1,0 +1,46 @@
+  <div class="green-wrapper">
+  
+  
+  
+            <div class="heading"><h2>Customer Detail</h2>
+            </div>
+
+
+
+<table width="100%">
+	<tbody>
+		<tr>
+			<th>会社名</th>
+			<td><%= @post.company %></td>
+			<th>代表者</th>
+			<td><%= @post.owner %></td>
+		</tr>
+		<tr>
+		    <th>電話番号</th>
+			<td><%= link_to '発信', '/posts/:id', method: :post %>｜
+			       <%= link_to '切断', '/posts/:id', method: :post %>｜
+			       <%= link_to '保留', '/posts/:id', method: :post %></td>
+			<th>住所</th>
+			<td colspan = "3"><%= @post.address %></td>
+		</tr>
+	</tbody>
+</table>
+
+</br>
+
+<table width="100%">
+	<tbody>
+		<tr>
+			<th>ステータス</th>
+			<td></td>
+			<th>再コール日時</th>
+			<td></td>
+		</tr>
+		<tr>
+			<th>コメント</th>
+			<td colspan = "3"></td>
+		</tr>
+	</tbody>
+</table>
+
+</div>

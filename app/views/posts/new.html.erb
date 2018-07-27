@@ -1,0 +1,60 @@
+  <div class="green-wrapper">
+  
+            <div class="heading"><h2>New Registration</h2>
+            </div>
+            
+            <table>
+	            <tbody>
+	            <%= form_for @post do |f| %>
+		            <tr>
+			            <th>会社名</th>
+			            <td><%=text_field :post, :company %> </td>
+			       </tr>
+			        <tr>
+			            <th>代表者名</th>
+			            <td><%=text_field :post, :company %> </td>
+			       </tr>
+			        <tr>
+		                <th>電話番号</th>
+		                <td><%=telephone_field :post, :tel %></td>
+		           </tr>
+			        <tr>
+			            <th>住所</th>
+			            <td><%=text_field :post, :address %></td>
+			       </tr>
+			       <tr>
+			            <th>人数</th>
+			            <td><%=number_field :post, :people %></td>
+			       </tr>
+			       <tr>
+			            <th>ステータス</th>
+			            <td><%= f.select(:status,[ 
+			            ["コール留守","コール留守"],
+			            ["オーナー不在","オーナー不在"],
+			            ["再コール","再コール"],
+			            ["見込み客","見込み客"],
+			            ["アポイント","アポイント"],
+			            ["フロントNG","フロントNG"],
+			            ["今後NG","今後NG"],
+			            ["社労士契約済","社労士契約済"],
+			            ["助成金済","助成金済"],
+			            ["一時置","一時置"]
+			             ]) %></td>
+			       </tr>
+			       <tr>
+			            <th>再コール</th>
+			            <td><%= date_field :post, :datetime %></td>
+			       </tr>
+			       <tr>
+			            <th>コメント</th>
+			            <td><%= text_area :post, :comment %></td>
+			       </tr>
+			       <tr>
+			            <th colspan ="2"><%=f.submit%></th>
+			       </tr>
+	            </tbody>
+            </table>      
+			
+          <%end%>
+
+  </div>
