@@ -74,3 +74,4 @@ gem 'roo'
 gem 'twilio-ruby'
 #ページング
 gem  'kaminari'
+gem 'ransack'

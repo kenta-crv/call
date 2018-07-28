@@ -6,34 +6,34 @@
 
 
 <!--検索機能実装-->
-      <table width = "80%">
-	     <tbody>
-	     <%= form_tag posts_path, :method => 'get' do %>
-           <tr>
-           		<th colspan = "2" >検索</th>
-           </tr>
-           <tr>
-                <th><%= label_tag :company, "会社名" %></th>
-           		<td><%= text_field_tag :company , params[:company] %></td>
-           </tr>
-           <tr>
-                <th><%= label_tag :owner, "代表者" %></th>
-           		<td><%= text_field_tag :owner , params[:owner] %></td>
-           </tr>
-           <tr>
-                <th><%= label_tag :tel, "電話番号" %></th>
-           		<td><%= text_field_tag :tel , params[:tel] %></td>
-           </tr>
-           <tr>
-                <th><%= label_tag :address, "住所" %></th>
-           		<td><%= text_field_tag :address , params[:address] %></td>
-           </tr>
-           <tr>
-				<td colspan = "2" ><%= submit_tag '検索' %></td>
+    <table width = "80%">
+			<tbody>
+				<%= search_form_for @q do |f| %>
+					<tr>
+						<th colspan = "2" >検索</th>
+					</tr>
+					<tr>
+						<th><%= label_tag :company, "会社名" %></th>
+						<td><%= f.search_field :company_cont, type: "text" %></td>
+					</tr>
+					<tr>
+						<th><%= label_tag :owner, "代表者" %></th>
+						<td><%= f.search_field :owner_cont, type: "text" %></td>
+					</tr>
+					<tr>
+						<th><%= label_tag :tel, "電話番号" %></th>
+						<td><%= f.search_field :tel_cont, type: "text" %></td>
+					</tr>
+					<tr>
+						<th><%= label_tag :address, "住所" %></th>
+						<td><%= f.search_field :address_cont, type: "text" %></td>
+					</tr>
+					<tr>
+						<td colspan = "2" ><%= f.submit '検索' %></td>
+					</tr>
 				<% end %>
-		    </tr>
 	    </tbody>
-      </table>
+    </table>
             
   <div class="green-wrapper">
   
