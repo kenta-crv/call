@@ -7,32 +7,32 @@
 
 <!--検索機能実装-->
     <table width = "80%">
-			<tbody>
-				<%= search_form_for @q do |f| %>
-					<tr>
-						<th colspan = "2" >検索</th>
-					</tr>
-					<tr>
-						<th><%= label_tag :company, "会社名" %></th>
-						<td><%= f.search_field :company_cont, type: "text" %></td>
-					</tr>
-					<tr>
-						<th><%= label_tag :owner, "代表者" %></th>
-						<td><%= f.search_field :owner_cont, type: "text" %></td>
-					</tr>
-					<tr>
-						<th><%= label_tag :tel, "電話番号" %></th>
-						<td><%= f.search_field :tel_cont, type: "text" %></td>
-					</tr>
-					<tr>
-						<th><%= label_tag :address, "住所" %></th>
-						<td><%= f.search_field :address_cont, type: "text" %></td>
-					</tr>
-					<tr>
-						<td colspan = "2" ><%= f.submit '検索' %></td>
-					</tr>
-				<% end %>
-	    </tbody>
+      <tbody>
+        <%= search_form_for @q do |f| %>
+          <tr>
+            <th colspan = "2" >検索</th>
+          </tr>
+          <tr>
+            <th><%= label_tag :company, "会社名" %></th>
+            <td><%= f.search_field :company_cont, type: "text" %></td>
+          </tr>
+          <tr>
+            <th><%= label_tag :owner, "代表者" %></th>
+            <td><%= f.search_field :owner_cont, type: "text" %></td>
+          </tr>
+          <tr>
+            <th><%= label_tag :tel, "電話番号" %></th>
+            <td><%= f.search_field :tel_cont, type: "text" %></td>
+          </tr>
+          <tr>
+            <th><%= label_tag :address, "住所" %></th>
+            <td><%= f.search_field :address_cont, type: "text" %></td>
+          </tr>
+          <tr>
+            <td colspan = "2" ><%= f.submit '検索' %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
             
   <div class="green-wrapper">
@@ -41,34 +41,34 @@
             </div>
 
             <table>
-	            <tbody>
-		            <tr>
-			            <th>会社名</th>
-			            <th>代表者名</th>
-		                <th>電話番号</th>
-			            <th>住所</th>
-			            <th>編集/削除</th>
-		            </tr>
+              <tbody>
+                <tr>
+                  <th>会社名</th>
+                  <th>代表者名</th>
+                    <th>電話番号</th>
+                  <th>住所</th>
+                  <th>編集/削除</th>
+                </tr>
     <% @posts.each do |post| %>
-		            <tr>
-			            <td><%= link_to post.company, post_path(post) %> </td>
-			            <td><%= link_to post.owner, post_path(post) %></td>
-			            <td><%= post.tel %></td>
-			            <td><%= post.address %></td>
-			            <td><%= link_to '編集', edit_post_path(post), class: 'command'%>
-			            <%= link_to '削除', 
-			            	post_path(post), 
-			            	method: :delete, 
-			            	class: 'command',
-			            	data: { confirm: '本当に削除しますか？'} %></td>
-			            	<% end %>
-		            </tr>
-		            <tr>
-		            	<td colspan = "5">
-		            	<%= paginate @posts %>
-		            	</td>
-		            </tr>
-	            </tbody>
+                <tr>
+                  <td><%= link_to post.company, post_path(post) %> </td>
+                  <td><%= link_to post.owner, post_path(post) %></td>
+                  <td><%= post.tel %></td>
+                  <td><%= post.address %></td>
+                  <td><%= link_to '編集', edit_post_path(post), class: 'command'%>
+                  <%= link_to '削除', 
+                    post_path(post), 
+                    method: :delete, 
+                    class: 'command',
+                    data: { confirm: '本当に削除しますか？'} %></td>
+                    <% end %>
+                </tr>
+                <tr>
+                  <td colspan = "5">
+                  <%= paginate @posts %>
+                  </td>
+                </tr>
+              </tbody>
             </table>      
   
    
@@ -81,11 +81,11 @@
     
    <%= form_tag import_posts_path, multipart: true do %>
    <table>
-   	<tbody>
-   	   <tr>
-   			<th>CSVファイルインポート</th>
-   			<td><%= file_field_tag :file %></td>
-        	<td><%= submit_tag "インポート" %></td>
+     <tbody>
+        <tr>
+         <th>CSVファイルインポート</th>
+         <td><%= file_field_tag :file %></td>
+          <td><%= submit_tag "インポート" %></td>
         </tr>
     </tbody>
    </table>

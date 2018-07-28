@@ -8,8 +8,8 @@ before_action :authenticate_user!
   end
   
   def show
-  	@post = Post.find_by(params[:id])
-    end
+    @post = Post.find(params[:id])
+  end
   
   def new 
     @post = Post.new

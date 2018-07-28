@@ -2,8 +2,17 @@
   
   
   
-            <div class="heading"><h2>Customer Detail</h2>
-            </div>
+  <div class="heading">
+    <h2>
+      <% if prev_post = @post.prev_post %>
+        <%= link_to "前へ", post_path(prev_post), class: "prev" %>
+      <% end %>
+      <label>Customer Detail</label>
+      <% if next_post = @post.next_post %>
+        <%= link_to "次へ", post_path(next_post), class: "next" %>
+      <% end %>
+    </h2>
+  </div>
 
 
 
