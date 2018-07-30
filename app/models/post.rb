@@ -27,5 +27,12 @@ class Post < ApplicationRecord
       User.all #全て表示。
     end
   end
-  
+
+  def next_post
+    Post.where("id > ?", id).first
+  end
+
+  def prev_post
+    Post.where("id < ?", id).last
+  end
 end

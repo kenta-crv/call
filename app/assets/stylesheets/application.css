@@ -118,6 +118,18 @@ header {
   font-weight: bold;
   text-align:center;
   font-size:30px;
+  overflow: hidden;
+  padding: 0px 5px;
+}
+
+.heading h2 .prev {
+  float: left;
+  font-size: 20px;
+}
+
+.heading h2 .next {
+  float: right;
+  font-size: 20px;
 }
 
 .heading h3 {
