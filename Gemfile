@@ -75,3 +75,7 @@ gem 'twilio-ruby'
 #ページング
 gem  'kaminari'
 gem 'ransack'
+
+#takigawa
+gem 'annotate'
+gem 'dotenv-rails'

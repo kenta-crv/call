@@ -1,7 +1,7 @@
   <div class="green-wrapper">
-  
-  
-  
+
+
+
   <div class="heading">
     <h2>
       <% if prev_post = @post.prev_post %>
@@ -26,7 +26,7 @@
 		</tr>
 		<tr>
 		    <th>電話番号</th>
-			<td><%= link_to '発信', '/posts/:id', method: :post %>｜
+			<td><%= link_to '発信', call_post_path(@post), method: :post %>｜
 			       <%= link_to '切断', '/posts/:id', method: :post %>｜
 			       <%= link_to '保留', '/posts/:id', method: :post %></td>
 			<th>住所</th>
