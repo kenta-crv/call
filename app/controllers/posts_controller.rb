@@ -1,9 +1,7 @@
 require 'rubygems'
-require 'twilio-ruby'
 
 class PostsController < ApplicationController
-
-before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @q = Post.ransack(params[:q])
@@ -69,18 +67,6 @@ def import
   # fileはtmpに自動で一時保存される
   Post.import(params[:file])
   redirect_to root_url, notice: "リストを追加しました。"
-end
-
-def call
-  @post = Post.find(params[:id])
-  client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"])
-  c = client.calls.create(
-    from: ENV["TWILIO_PHONE_NUMBER"],
-    to: @post.tel,
-    url: 'http://demo.twilio.com/docs/voice.xml',
-    #url: "http://localhost:3000/posts/message",
-  )
-  redirect_to action: :index
 end
 
 # def message

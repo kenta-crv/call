@@ -79,3 +79,4 @@ gem 'ransack'
 #takigawa
 gem 'annotate'
 gem 'dotenv-rails'
+gem 'faker'
