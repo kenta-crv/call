@@ -1,0 +1,36 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.two_column {
+  float: left;
+  width: 50%;
+  position: relative;
+}
+
+
+.show-top {
+	margin-top:-70px;
+}
+
+.call-font {
+	color:red;
+	font-size:24px;
+	font-weight:bold;
+}
+
+.prev {
+    float: left;
+    color: white;
+    text-shadow: 2px 3px 1px #000;
+    padding-left:35px;
+    margin-top:-44.5px;
+}
+ .next {
+    float: right;
+    color: white;
+    text-shadow: 2px 3px 1px #000;
+    padding-right:35px;
+    margin-top:-44.5px;
+}

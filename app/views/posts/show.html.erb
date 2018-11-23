@@ -1,0 +1,184 @@
+<% if prev_post = @post.prev_post %>
+    <%= link_to "前へ", post_path(prev_post), class: "prev" %>
+      <% end %>
+     
+<div class="show-top">
+<div class="two_column">
+<table width="100%">
+		<col width="20%">
+		<col width="30%">
+		<col width="20%">
+		<col width="30%">
+	<tbody>
+		<tr>
+			<th colspan="4">顧客情報</th>
+		</tr>
+		<tr>
+			<th>会社名</th>
+			<td><%= @post.company %></td>
+			<th>店舗名</th>
+			<td><%= @post.store %></td>
+		</tr>
+		<tr>
+			<th>代表者</th>
+			<td><%= @post.owner %></td>
+			<th>フリガナ</th>
+			<td><%= @post.kana %></td>
+		</tr>
+		<tr>
+			<th>電話番号１</th>
+			<td><%= @post.tel %></td>
+			<th>電話番号２</th>
+			<td><%= @post.tel2 %></td>
+		</tr>
+		<tr>
+			<th>FAX</th>
+			<td><%= @post.fax %></td>
+			<th>業種</th>
+			<td><%= @post.industry %></td>
+		</tr>
+		<tr>
+			<th>メール</th>
+			<td><%= @post.mail %></td>
+			<th>URL</th>
+			<td><%= @post.url %></td>
+		</tr>
+		<tr>
+			<th>人数</th>
+			<td><%= @post.people %></td>
+			<th></th>
+			<td></td>
+		</tr>
+		<tr>
+			<th>住所1</th>
+			<td colspan="3"></td>
+		</tr>
+	</tbody>
+</table>		
+</div>
+
+ <!--
+<div id="controls">
+  <div id="info">
+    <p class="instructions">Twilio Client</p>
+    <div id="client-name"></div>
+    <div id="output-selection">
+      <label>Ringtone Devices</label>
+      <select id="ringtone-devices" multiple></select>
+      <label>Speaker Devices</label>
+      <select id="speaker-devices" multiple></select><br/>
+      <a id="get-devices">Seeing unknown devices?</a>
+    </div>
+    <div id="log"></div>
+  </div>
+  <div id="call-controls">
+    <!-- <p class="instructions">Make a Call:</p>
+    <input id="phone-number" type="text" placeholder="Enter a phone # or client name" /> -->
+    <!-- <button id="button-call">Call</button>
+    <button id="button-hangup">Hangup</button>
+    <button id="button-onhold">OnHold</button> 
+    <div id="volume-indicators">
+      <label>Mic Volume</label>
+      <div id="input-volume"></div><br/><br/>
+      <label>Speaker Volume</label>
+      <div id="output-volume"></div>
+    </div>
+  </div>
+</div>-->
+
+<% if next_post = @post.next_post %>
+    <%= link_to "次へ", post_path(next_post), class: "next" %>
+      <% end %>
+
+<div class="two_column">
+<table width="100%">
+		<col width="20%">
+		<col width="30%">
+		<col width="20%">
+		<col width="30%">
+	<tbody>
+		<tr>
+			<th colspan="4">コール</th>
+		</tr>
+		<tr>
+			<td colspan="3" class="call-font"><%= @post.tel%></td>
+			<td>代表者：<%= @post.owner %></br>
+				   担当者：<%= @post.owner %>
+			</td>
+		</tr>
+		<tr>
+			<th colspan ="4">
+					<button id="button-call" data-number="<%= @post.tel %>">発信</button>
+        			<button id="button-hangup" data-number="<%= @post.tel %>">保留</button>
+        			<button id="button-hangup" data-number="<%= @post.tel %>">切断</button>
+        	</th>
+		</tr>
+		<tr>
+			<th colspan="4">情報入力</th>
+			<%= form_for ([@post, @post.details.build]) do |f| %>
+		</tr>
+		<tr>
+			<th>ステータス</th>
+			<td><%= f.select(:statu,[
+						["着信のみ","着信のみ"],
+			            ["オーナー不在","オーナー不在"],
+			            ["再コール","再コール"],
+			            ["見込み客","見込み客"],
+			            ["APP","APP"],
+			            ["フロントNG","フロントNG"],
+			            ["クロージングNG","クロージングNG"],
+			            ["従業員なしNG","従業員なしNG"],
+			            ["入社年月日NG","入社年月日NG"],
+			            ["永久NG","永久NG"],
+			            ["社労士契約済","社労士契約済"],
+			            ["助成金済","助成金済"]
+			             ]) %></td>
+			<th>再コール日時</th>
+			<td><%= f.datetime_field :time %></td>
+		</tr>
+		<tr>
+			<th>コメント</th>
+			<td colspan ="4"><%= f.text_area :comment %></td>
+		</tr>
+		<tr>
+			<th colspan ="4"><%=f.submit%></th>
+		</tr>
+	</tbody>
+</table>
+<%end%>
+</div>
+
+
+<table width="100%">
+		<col width="15%">
+		<col width="10%">
+		<col width="15%">
+		<col width="15%">
+		<col width="25%">
+		<col width="10%">
+		<col width="10%">
+<% if @post.details.any? %>
+		<tr>
+			<th>日時</th>
+			<th>担当者</th>
+			<th>ステータス</th>
+			<th>次回連絡日</th>
+			<th>コメント</th>
+			<th>削除</th>
+		</tr>
+		<tr>
+		<% @post.details.each do |detail| %>
+			<td><%= detail.created_at %></td>
+			<td></td>
+			<td><%= detail.statu %></td>
+			<td><%= detail.time %></td>
+			<td><%= detail.comment %></td>
+			<td></td>
+		</tr>
+<% end %>
+</table>
+<% end %>
+</div>
+
+<script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.4/twilio.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

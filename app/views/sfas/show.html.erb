@@ -1,0 +1,188 @@
+<% if prev_sfa = @sfa.prev_sfa %>
+    <%= link_to "前へ", sfa_path(prev_sfa), class: "prev" %>
+      <% end %>
+     
+<div class="show-top">
+<div class="two_column">
+<table width="100%">
+      <col width="20%">
+      <col width="30%">
+      <col width="20%">
+      <col width="30%">
+	<tbody>
+	  <tr>
+        <th colspan = "4">基本情報</th>
+      </tr>
+	  <tr>
+	    <th>会社名</th>
+		<td><%= @sfa.company %> </td>
+		<th>店舗名</th>
+		<td><%= @sfa.store %> </td>
+	  </tr>
+	  <tr>
+		 <th>代表者</th>
+		 <td><%= @sfa.owner %></td>
+		 <th>ダイヒョウ</th>
+		 <td><%= @sfa.kana %></td>
+	  </tr>
+	  <tr>
+		 <th>担当者</th>
+		 <td><%= @sfa.person %></td>
+		 <th>タントウ</th>
+		 <td><%= @sfa.p_kana %></td>
+	  </tr>
+	  <tr>
+		 <th>電話番号1</th>
+		 <td><%= @sfa.tel %></td>
+		 <th>電話番号2</th>
+		 <td><%= @sfa.tel2 %></td>
+	  </tr>
+	  <tr>
+		 <th>FAX番号2</th>
+		 <td><%= @sfa.fax %></td>
+		 <th>業種</th>
+		 <td><%= @sfa.industry %></td>
+	  </tr>
+	  <tr>
+		 <th>メール</th>
+		 <td><%= @sfa.mail %></td>
+		 <th>URL</th>
+		 <td><%= @sfa.url %></td>
+	  </tr>
+	  <tr>
+		  <th>人数</th>
+		  <td><%= @sfa.people %></td>
+		  <th></th>
+		  <td></td>
+	   </tr>
+	  <tr>
+		  <th>住所</th>
+		  <td colspan="3"><%= @sfa.address %></td>
+		</tr>
+		<tr>
+	</tbody>
+ </table>      
+ </div>
+
+<% if next_sfa = @sfa.next_sfa %>
+    <%= link_to "次へ", sfa_path(next_sfa), class: "next" %>
+      <% end %>
+     
+<div class="two_column">
+<table width="100%">
+      <col width="20%">
+      <col width="30%">
+      <col width="20%">
+      <col width="30%">
+	<tbody>
+	  <tr>
+          <th colspan = "4">営業情報</th>
+        </tr>
+		<tr>
+		  <th>雇用保険</th>
+		  <td><%= @sfa.employment %></td>
+		  <th>社会保険</th>
+		  <td><%= @sfa.social %></td>
+		</tr>
+		<tr>
+		  <th>アポ担当</th>
+		  <td><%= @sfa.appointer %></td>
+		  <th>対象人数</th>
+		  <td><%= @sfa.target %></td>
+		</tr>
+		<tr>
+		  <th>売上予想</th>
+		  <td><%= @sfa.sales_forecast %></td>
+		  <th>印象</th>
+		  <td><%= @sfa.impression %></td>
+		</tr>
+		<tr>
+		  <th>リピート営業</th>
+		  <td><%= @sfa.sales_forecast %></td>
+		  <th>審査内容</th>
+		  <td><%= @sfa.examination %></td>
+		</tr>
+		<tr>
+	</tbody>
+ </table>      
+
+</div>
+</div>   
+  
+<div class="two_column">
+<table width="100%">
+      <col width="20%">
+      <col width="30%">
+      <col width="20%">
+      <col width="30%">
+	<tbody>
+	    <tr>
+  			<th colspan = "4">情報更新</th>
+	     <%= form_for ([@sfa, @sfa.comments.build]) do |f| %>
+		</tr>
+		<tr>
+			<th>営業担当</th>
+		    <td><%= f.text_field :responsible%></td>
+		    <th>商品名</th>
+		    <td><%= f.text_field :product %></td></td>
+		</tr>
+		<tr>
+		    <th>ステータス</th>
+		    <td><%= f.select(:statu,[
+		            ["",""],
+		    		["見込高","見込高"],
+		    		["見込中","見込中"],
+		    		["見込低","見込低"],
+		    		["申込待","申込待"],
+		    		["契約","契約"],
+		    		["NG","NG"],
+		    		["不在","不在"]
+		     		]) %></td>
+		    <th>次回営業日</th>
+		    <td><%= f.datetime_field :time %></td>
+		</tr>
+		<tr>
+			<th>コメント</th>
+			<td colspan = "2"><%= f.text_area :detail %></td>
+			<th><%= f.submit '登録' %></th>
+		</tr>
+		<% end %>
+	</tbody>
+ </table>      
+</div>
+
+<table width="100%">
+		<col width="13%">
+		<col width="10%">
+		<col width="15%">
+		<col width="8%">
+		<col width="13%">
+		<col width="29%">
+		<col width="7%">
+<% if @sfa.comments.any? %>
+		<tr>
+			<th>日時</th>
+			<th>営業担当</th>
+			<th>商品名</th>
+			<th>ステータス</th>
+			<th>次回連絡日</th>
+			<th>コメント</th>
+			<th>削除</th>
+		</tr>
+		<tr>
+		<% @sfa.comments.each do |comment| %>
+			<td><%= comment.created_at %></td>
+			<td><%= comment.responsible %></td>
+			<td><%= comment.product %></td>
+			<td><%= comment.statu %></td>
+			<td><%= comment.time %></td>
+			<td><%= comment.detail %></td>
+			<td></td>
+		</tr>
+<% end %>
+</table>
+<% end %>
+</div>
+
+<script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.4/twilio.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

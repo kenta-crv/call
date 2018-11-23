@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  responsible: MyString
+  product: MyString
+  statu: MyString
+  time: 2018-11-21 20:24:08
+  detail: MyString
+  sfa: one
+
+two:
+  responsible: MyString
+  product: MyString
+  statu: MyString
+  time: 2018-11-21 20:24:08
+  detail: MyString
+  sfa: two

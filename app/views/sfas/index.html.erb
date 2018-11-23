@@ -1,0 +1,133 @@
+<div  class="heading"><h2>リスト検索</h2></div>
+
+<!--検索機能実装-->
+<%= search_form_for @q do |f| %>
+    <table width = "90%">
+      <col width="20%">
+      <col width="30%">
+      <col width="20%">
+      <col width="30%">
+      <tbody>
+          <tr>
+            <th colspan = "4">検索</th>
+          </tr>
+          <tr>
+            <th>会社名</th>
+            <td><%= f.search_field :company_cont, type: "text" %></td>
+            <th>店舗名</th>
+		    <td><%= f.search_field:store_cont, type: "text" %> </td>
+	      </tr>
+	      <tr>
+            <th>代表者</th>
+            <td><%= f.search_field :owner_cont, type: "text" %></td>
+            <th>ダイヒョウ</th>
+            <td><%= f.search_field :kana_cont, type: "text" %></td>
+          </tr>
+          <tr>
+            <th>担当者</th>
+            <td><%= f.search_field :person_cont, type: "text" %></td>
+            <th>タントウ</th>
+            <td><%= f.search_field :p_kana_cont, type: "text" %></td>
+          </tr>
+          <tr>
+            <th>電話番号1</th>
+            <td><%= f.search_field :tel_cont, type: "text" %></td>
+            <th>電話番号2</th>
+            <td><%= f.search_field :tel2_cont, type: "text" %></td>
+          </tr>
+          <tr>
+            <th>FAX番号</th>
+            <td><%= f.search_field :fax_cont, type: "text" %></td>
+            <th>業種</th>
+            <td><%= f.search_field :industry_cont, type: "text" %></td>
+          </tr>
+          <tr>
+            <th>メール</th>
+            <td><%= f.search_field :mail_cont, type: "text" %></td>
+            <th>URL</th>
+            <td><%= f.search_field :url_cont, type: "text" %></td>
+          </tr>
+          <tr>
+            <th>人数</th>
+            <td><%= f.search_field :people_cont, type: "text" %></td>
+            <th>住所</th>
+            <td><%= f.search_field :address_cont, type: "text" %></td>
+          </tr>
+            <th>アポ担当</th>
+		    <td><%=text_field :sfa, :appointer %></td>
+		    <th>見込み</th>
+		    <td><%=f.select(:status,[
+		  			["見込高","見込高"],
+		  			["見込中","見込中"],
+		  			["見込低","見込低"],
+		  			["日程調整","日程調整"],
+		  			["契約","契約"],
+		  			["NG","NG"],
+		  			["年度改め","年度改め"]
+		  			]) %></td>
+          <tr>
+            <th colspan = "4" ><%= f.submit '検索' %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+<div  class="heading"><h2>営業リスト</h2></div>
+          <table width ="90%">
+              <tbody>
+                   <col width="20%">
+                   <col width="15%">
+                   <col width="15%">
+                   <col width="15%">
+                   <col width="15%">
+                   <col width="10%">
+                <tr>
+                  <th>会社名</th>
+                  <th>電話番号</th>
+                  <th>メール</th>
+                  <th>ステータス</th>
+                  <th>営業日時</th>
+                  <th>編集/削除</th>
+                </tr>
+<% @sfas.each do |sfa| %>
+                <tr>
+                  <td><%= link_to sfa.company, sfa_path(sfa) %> </td>
+                  <td><%= sfa.tel %></td>
+                  <td><%= sfa.mail %></td>
+                  <td><%= sfa.status %></td>
+                  <td><%= sfa.sales_day %></td>
+                  <td><%= link_to '編集', edit_sfa_path(sfa), class: 'command'%>
+                  <%= link_to '削除', 
+                    sfa_path(sfa), 
+                    method: :delete, 
+                    class: 'command',
+                    data: { confirm: '本当に削除しますか？'} %></td>
+                    <% end %>
+                </tr>
+                <tr>
+                  <th colspan = "6">
+    
+                  </th>
+                </tr>
+              </tbody>
+            </table>      
+            
+</br>
+<div  class="heading"><h2>インポート</h2></div>
+ 
+   <%= form_tag import_sfas_path, multipart: true do %>
+   <table width="90%">
+     <tbody>
+        <tr>
+           <th>CSVファイルインポート</th>
+        <tr>
+        <tr>
+           <td><%= file_field_tag :file %></td>
+        <tr>
+        <tr>
+           <th colspan="2"><%= submit_tag "インポート" %></th>
+        </tr>
+    </tbody>
+   </table>
+<% end %>

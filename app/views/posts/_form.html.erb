@@ -1,0 +1,53 @@
+	  <%= form_for @post do |f| %>
+<table width = "90%">
+      <col width="20%">
+      <col width="30%">
+      <col width="20%">
+      <col width="30%">
+	<tbody>
+	  <tr>
+        <th colspan = "4">検索</th>
+      </tr>
+	  <tr>
+	    <th>会社名</th>
+		<td><%=text_field :post, :company %> </td>
+		<th>店舗名</th>
+		<td><%=text_field :post, :store %> </td>
+	  </tr>
+	  <tr>
+		 <th>代表者</th>
+		 <td><%=text_field :post, :owner %></td>
+		 <th>ダイヒョウ</th>
+		 <td><%=text_field :post, :kana %></td>
+	  </tr>
+	  <tr>
+		 <th>電話番号1</th>
+		 <td><%=telephone_field :post, :tel %></td>
+		 <th>電話番号2</th>
+		 <td><%=telephone_field :post, :tel2 %></td>
+	  </tr>
+	  <tr>
+		 <th>FAX番号2</th>
+		 <td><%=telephone_field :post, :fax %></td>
+		 <th>業種</th>
+		 <td><%=text_field :post, :industry %></td>
+	  </tr>
+	  <tr>
+		 <th>メール</th>
+		 <td><%=text_field :post, :mail %></td>
+		 <th>URL</th>
+		 <td><%=url_field :post, :url %></td>
+	  </tr>
+	  <tr>
+		  <th>人数</th>
+		  <td><%=number_field :post, :people %></td>
+		  <th>住所</th>
+		  <td><%=text_field :post, :address %></td>
+		</tr>
+		<tr>
+			<th colspan ="4"><%=f.submit%></th>
+	   </tr>
+	</tbody>
+ </table>      
+	    <%end%>
+	    

@@ -1,0 +1,116 @@
+	  <%= form_for @sfa do |f| %>
+<table width = "90%">
+      <col width="20%">
+      <col width="30%">
+      <col width="20%">
+      <col width="30%">
+	<tbody>
+	  <tr>
+        <th colspan = "4">基本情報</th>
+      </tr>
+	  <tr>
+	    <th>会社名</th>
+		<td><%=text_field :sfa, :company %> </td>
+		<th>店舗名</th>
+		<td><%=text_field :sfa, :store %> </td>
+	  </tr>
+	  <tr>
+		 <th>代表者</th>
+		 <td><%=text_field :sfa, :owner %></td>
+		 <th>ダイヒョウ</th>
+		 <td><%=text_field :sfa, :kana %></td>
+	  </tr>
+	  <tr>
+		 <th>担当者</th>
+		 <td><%=text_field :sfa, :person %></td>
+		 <th>タントウ</th>
+		 <td><%=text_field :sfa, :p_kana %></td>
+	  </tr>
+	  <tr>
+		 <th>電話番号1</th>
+		 <td><%=telephone_field :sfa, :tel %></td>
+		 <th>電話番号2</th>
+		 <td><%=telephone_field :sfa, :tel2 %></td>
+	  </tr>
+	  <tr>
+		 <th>FAX番号2</th>
+		 <td><%=telephone_field :sfa, :fax %></td>
+		 <th>業種</th>
+		 <td><%=text_field :sfa, :industry %></td>
+	  </tr>
+	  <tr>
+		 <th>メール</th>
+		 <td><%=text_field :sfa, :mail %></td>
+		 <th>URL</th>
+		 <td><%=url_field :sfa, :url %></td>
+	  </tr>
+	  <tr>
+		  <th>人数</th>
+		  <td><%=number_field :sfa, :people %></td>
+		  <th>住所</th>
+		  <td><%=text_area :sfa, :address %></td>
+		</tr>
+		<tr>
+          <th colspan = "4">営業情報</th>
+        </tr>
+		<tr>
+		  <th>雇用保険</th>
+		  <td><%=check_box :sfa, :employment %></td>
+		  <th>社会保険</th>
+		  <td><%=check_box :sfa, :social %></td>
+		</tr>
+		<tr>
+		  <th>アポ担当</th>
+		  <td><%=text_field :sfa, :appointer %></td>
+		  <th>営業担当</th>
+		  <td><%=text_field :sfa, :sales_staff %></td>
+		</tr>
+		<tr>
+		  <th>見込み</th>
+		  <td><%=f.select(:status,[
+		  			["見込高","見込高"],
+		  			["見込中","見込中"],
+		  			["見込低","見込低"],
+		  			["日程調整","日程調整"],
+		  			["契約","契約"],
+		  			["NG","NG"],
+		  			["年度改め","年度改め"]
+		  			]) %></td>
+		  <th>対象人数</th>
+		  <td><%=number_field :sfa, :target %></td>
+		</tr>
+		<tr>
+		  <th>売上予想</th>
+		  <td><%=number_field :sfa, :sales_forecast %></td>
+		  <th>印象</th>
+		  <td><%=f.select(:status,[
+		  			["見込高","見込高"],
+		  			["見込中","見込中"],
+		  			["見込低","見込低"],
+		  			["日程調整","日程調整"],
+		  			["契約","契約"],
+		  			["NG","NG"]
+		  			]) %></td>
+		</tr>
+		<tr>
+		  <th>リピート営業</th>
+		  <td><%=f.select(:status,[
+		  			["あり","あり"],
+		  			["なし","なし"],
+		  			]) %></td>
+		  <th>次回追い日</th>
+		  <td><%=datetime_field :sfa, :next_sales %></td>
+		</tr>
+		<tr>
+		  <th>詳細</th>
+		  <td><%=text_area :sfa, :ditails %></td>
+		  <th>審査内容</th>
+		  <td><%=text_area :sfa, :examination %></td>
+		</tr>
+		<tr>
+			<th colspan ="4"><%=f.submit '登録'%></th>
+	   </tr>
+	</tbody>
+ </table>      
+	    <%end%>
+	    

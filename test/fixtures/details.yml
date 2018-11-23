@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  statu: MyString
+  time: 2018-11-22 14:56:25
+  comment: MyString
+  post: one
+
+two:
+  statu: MyString
+  time: 2018-11-22 14:56:25
+  comment: MyString
+  post: two

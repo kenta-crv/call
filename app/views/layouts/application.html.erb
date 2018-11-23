@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Smart CTI</title>
+
+    <meta charset="utf-8">
+    <!--　レスポンシブの定義　-->
+    <meta name="viewport" content="width=device-width, initial-scale=1,0">
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <!--　ジャバスクリプト　-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <h1>SMART CTI</h1>
+  <header>
+    <div class="container">
+
+    <div class="header">
+<div class="header-list">
+<%= link_to  'ホーム', '/' %>
+<%= link_to  '新規作成', '/posts/new' %>
+<%= link_to  'SFA', '/sfas' %>
+<%= link_to  'カレンダー', 'https://calendar.google.com/calendar/r?hl=ja&pli=1&t=AKUaPmZ7YsUtf37GigsEpOWobWTSjJJrKm1ZaCepbwU57lG1uZAnLtvwbRgvfHeyrSb7g3Jf4ySq2jQ12y2MosPKQtRqmp2H-Q%3D%3D', :target=>["_blank"] %>
+    <% if user_signed_in? %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            <% else %>
+        <%= link_to 'ログイン', new_user_session_path %>
+            <% end %>
+</div>
+      
+      </div>
+    </div>
+  </header>
+
+ <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <main>
+    
+  <%= yield %>
+    </main>
+  </body>
+</html>
+
