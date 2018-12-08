@@ -5,8 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result.page(params[:page]).per(30)
-    
+    @posts = @q.result.page(params[:page]).per(100)
   end
 
   def show
@@ -25,24 +24,6 @@ class PostsController < ApplicationController
     else
         render 'new'
     end
- #
- #    begin
- #      account_id = ENV["TWILIO_ACCOUNT_SID"] || "AC2c48a3706b037c446af52fc71ef8c952"
- #      auth_token = ENV["TWILIO_AUTH_TOKEN"] || "274088d04ffc1375653cd1dd3929af17"
- #      client = Twilio::REST::Client.new(account_id, auth_token)
- #      client.account.calls.create(
- #        from: ENV["TWILIO_PHONE_NUMBER"] || "+815031962874",
- #        to: @post.tel || "+818020451020",
- #        url: "http://demo.twilio.com/docs/voice.xml",
- #        method: "GET",
- #      )
- #
- # #error handling
- #    rescue Twilio::REST::RequestError => e
- #      puts e.message
- #    end
- #
- #    redirect_to action: :index
   end
 
   def edit
@@ -70,13 +51,6 @@ def import
   redirect_to root_url, notice: "リストを追加しました。"
 end
 
-# def message
-#   response = Twilio::TwiML::Response.new do |r|　#TwiMLを作成するためのモジュール
-#     r.Say 'hello happy MerryChristmas', voice: 'alice'
-#   end
-#   render :xml => response.text
-# end
-
   private
     def post_params
       params.require(:post).permit(
@@ -92,6 +66,7 @@ end
       :url, #URL
       :people, #人数
       :address, #住所 
+      :history #履歴 
        )
     end
 

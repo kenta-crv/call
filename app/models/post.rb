@@ -18,7 +18,10 @@
 class Post < ApplicationRecord
     has_many :details
 
-
+   validates :company, presence: true
+   validates :tel, presence: true
+   validates :industry, presence: true
+   validates :address, presence: true
 
    def self.import(file)
         CSV.foreach(file.path, headers: true) do |row|
@@ -31,37 +34,11 @@ class Post < ApplicationRecord
        end
     end
 
-
     def self.updatable_attributes
-    		["company", "store", "owner","kana", "tel", "tel2","fax", "industry" "address", "mail" , "url ", "people"]
+    		["company", "store", "owner","kana", "tel", "tel2","fax", "industry", "address", "mail", "url", "people", "history"]
   	end
-
   	
-  def self.search(search) #self.でクラスメソッドとしている
-    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
-      Post.where(
-                ['company LIKE ?', "%#{company}%"],
-                ['store LIKE ?', "%#{store}%"],
-                ['owner LIKE ?', "%#{owner}%"],
-                ['kana LIKE ?', "%#{kana}%"],
-                ['tel LIKE ?', "%#{tel}%"],
-                ['tel2 LIKE ?', "%#{tel2}%"],
-                ['fax LIKE ?', "%#{fax}%"],
-                ['industry LIKE ?', "%#{industry}%"],
-                ['mail LIKE ?', "%#{mail}%"],
-                ['url LIKE ?', "%#{url}%"],
-                ['people LIKE ?', "%#{people}%"],
-                ['address LIKE ?', "%#{address}%"],
-                ['statu LIKE ?', "%#{statu}%"],
-                ['time LIKE ?', "%#{time}%"],
-                ['comment LIKE ?', "%#{comment}%"],
-                ['created_at BETWEEN ? AND ?', from, to, "%#{created_at}%"],
-                )
-        
-    else
-      Post.all #全て表示。
-    end
-  end
+
 
   def next_post
     Post.where("id > ?", id).first

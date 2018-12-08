@@ -11,7 +11,7 @@
       <col width="30%">
 	<tbody>
 	  <tr>
-        <th colspan = "4">基本情報</th>
+        <th colspan = "4">基本情報（<%= link_to("編集", edit_sfa_path) %>）</th>
       </tr>
 	  <tr>
 	    <th>会社名</th>
@@ -52,12 +52,16 @@
 	  <tr>
 		  <th>人数</th>
 		  <td><%= @sfa.people %></td>
-		  <th></th>
-		  <td></td>
+		  <th>過去ステータス</th>
+		  <td><%= @sfa.status %></td>
 	   </tr>
 	  <tr>
 		  <th>住所</th>
 		  <td colspan="3"><%= @sfa.address %></td>
+		</tr>
+		<tr>
+		  <th>詳細</th>
+		  <td colspan="3"><%= @sfa.ditails %></td>
 		</tr>
 		<tr>
 	</tbody>
@@ -109,6 +113,7 @@
 </div>
 </div>   
   
+  	     <%= form_for ([@sfa, @sfa.comments.build]) do |f| %>
 <div class="two_column">
 <table width="100%">
       <col width="20%">
@@ -118,7 +123,6 @@
 	<tbody>
 	    <tr>
   			<th colspan = "4">情報更新</th>
-	     <%= form_for ([@sfa, @sfa.comments.build]) do |f| %>
 		</tr>
 		<tr>
 			<th>営業担当</th>
@@ -146,9 +150,9 @@
 			<td colspan = "2"><%= f.text_area :detail %></td>
 			<th><%= f.submit '登録' %></th>
 		</tr>
-		<% end %>
 	</tbody>
- </table>      
+ </table>    
+ <% end %>  
 </div>
 
 <table width="100%">

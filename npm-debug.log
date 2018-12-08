@@ -1,0 +1,159 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'yarn' ]
+2 info using npm@2.15.11
+3 info using node@v4.9.1
+4 verbose install initial load of /usr/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/lib/package.json
+6 silly cache add args [ 'yarn', null ]
+7 verbose cache add spec yarn
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: 'yarn',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'yarn',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: 'latest',
+8 silly cache add   type: 'tag' }
+9 silly addNamed yarn@latest
+10 verbose addNamed "latest" is being treated as a dist-tag for yarn
+11 info addNameTag [ 'yarn', 'latest' ]
+12 silly mapToRegistry name yarn
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry data Result {
+15 silly mapToRegistry   raw: 'yarn',
+15 silly mapToRegistry   scope: null,
+15 silly mapToRegistry   name: 'yarn',
+15 silly mapToRegistry   rawSpec: '',
+15 silly mapToRegistry   spec: 'latest',
+15 silly mapToRegistry   type: 'tag' }
+16 silly mapToRegistry uri https://registry.npmjs.org/yarn
+17 verbose addNameTag registry:https://registry.npmjs.org/yarn not in flight; fetching
+18 verbose request uri https://registry.npmjs.org/yarn
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 18:27:46
+21 verbose request id b29fa898cb1d512d
+22 verbose etag W/"be67c63101429cee555ef5697bbbc34a"
+23 verbose lastModified Wed, 07 Nov 2018 16:52:50 GMT
+24 http request GET https://registry.npmjs.org/yarn
+25 http 304 https://registry.npmjs.org/yarn
+26 verbose headers { date: 'Sat, 24 Nov 2018 09:27:46 GMT',
+26 verbose headers   connection: 'keep-alive',
+26 verbose headers   'set-cookie': [ '__cfduid=d67719c994845072a6e9416b7fda584161543051666; expires=Sun, 24-Nov-19 09:27:46 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+26 verbose headers   'cf-cache-status': 'HIT',
+26 verbose headers   'cache-control': 'max-age=300',
+26 verbose headers   'cf-ray': '47ead7721e9d94a5-NRT',
+26 verbose headers   etag: '"be67c63101429cee555ef5697bbbc34a"',
+26 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+26 verbose headers   'last-modified': 'Wed, 07 Nov 2018 16:52:50 GMT',
+26 verbose headers   vary: 'accept-encoding, accept',
+26 verbose headers   'x-amz-meta-rev': '262-c656f0f0267c3723e4c05ba7026d0a17',
+26 verbose headers   server: 'cloudflare' }
+27 silly get cb [ 304,
+27 silly get   { date: 'Sat, 24 Nov 2018 09:27:46 GMT',
+27 silly get     connection: 'keep-alive',
+27 silly get     'set-cookie': [ '__cfduid=d67719c994845072a6e9416b7fda584161543051666; expires=Sun, 24-Nov-19 09:27:46 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+27 silly get     'cf-cache-status': 'HIT',
+27 silly get     'cache-control': 'max-age=300',
+27 silly get     'cf-ray': '47ead7721e9d94a5-NRT',
+27 silly get     etag: '"be67c63101429cee555ef5697bbbc34a"',
+27 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+27 silly get     'last-modified': 'Wed, 07 Nov 2018 16:52:50 GMT',
+27 silly get     vary: 'accept-encoding, accept',
+27 silly get     'x-amz-meta-rev': '262-c656f0f0267c3723e4c05ba7026d0a17',
+27 silly get     server: 'cloudflare' } ]
+28 verbose etag https://registry.npmjs.org/yarn from cache
+29 verbose get saving yarn to /home/smart/.npm/registry.npmjs.org/yarn/.cache.json
+30 verbose correctMkdir /home/smart/.npm correctMkdir not in flight; initializing
+31 silly addNameTag next cb for yarn with tag latest
+32 silly addNamed yarn@1.12.3
+33 verbose addNamed "1.12.3" is a plain semver version for yarn
+34 silly cache afterAdd yarn@1.12.3
+35 verbose afterAdd /home/smart/.npm/yarn/1.12.3/package/package.json not in flight; writing
+36 verbose correctMkdir /home/smart/.npm correctMkdir not in flight; initializing
+37 verbose afterAdd /home/smart/.npm/yarn/1.12.3/package/package.json written
+38 silly install resolved [ { name: 'yarn',
+38 silly install resolved     installationMethod: 'tar',
+38 silly install resolved     version: '1.12.3',
+38 silly install resolved     license: 'BSD-2-Clause',
+38 silly install resolved     preferGlobal: true,
+38 silly install resolved     description: '📦🐈 Fast, reliable, and secure dependency management.',
+38 silly install resolved     resolutions: { sshpk: '^1.14.2' },
+38 silly install resolved     engines: { node: '>=4.0.0' },
+38 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/yarnpkg/yarn.git' },
+38 silly install resolved     bin: { yarn: './bin/yarn.js', yarnpkg: './bin/yarn.js' },
+38 silly install resolved     config: { commitizen: [Object] },
+38 silly install resolved     bugs: { url: 'https://github.com/yarnpkg/yarn/issues' },
+38 silly install resolved     homepage: 'https://github.com/yarnpkg/yarn#readme',
+38 silly install resolved     _id: 'yarn@1.12.3',
+38 silly install resolved     _shasum: 'fb4599bf1f8da01552bcc7e1571dfd4e53788203',
+38 silly install resolved     _resolved: 'https://registry.npmjs.org/yarn/-/yarn-1.12.3.tgz',
+38 silly install resolved     _from: 'yarn@latest',
+38 silly install resolved     _npmVersion: '4.6.1',
+38 silly install resolved     _nodeVersion: '8.6.0',
+38 silly install resolved     _npmUser: { name: 'danbuild', email: 'build@dan.cx' },
+38 silly install resolved     dist:
+38 silly install resolved      { shasum: 'fb4599bf1f8da01552bcc7e1571dfd4e53788203',
+38 silly install resolved        tarball: 'https://registry.npmjs.org/yarn/-/yarn-1.12.3.tgz',
+38 silly install resolved        integrity: 'sha512-8f5rWNDvkhAmCxmn8C0LsNWMxTYVk4VGKiq0sIB6HGZjaZTHsGIH87SUmVDUEd2Wk54bqKoUlbVWgQFCQhRkVw==',
+38 silly install resolved        fileCount: 12,
+38 silly install resolved        unpackedSize: 4894534,
+38 silly install resolved        'npm-signature': '-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb4xhdCRA9TVsSAnZWagAAOcAQAIixC4e4svNQL14lHFr4\n7LcWthe2XMAHh3dBIiBjKMdTYIZ6yDpOpizueOiRy4iGPfc3iEjXVOLSXGMn\nFdopR+ouS4sfyECfV5+FTUGV+rbaSIk4biA8V9uuRhkugURxggBPHqaUQf6D\nTPPSxg+YOHWTY0B34zq/poDIo8g60Hcsaqbsbf0pqjtL/wNAI9bCFFmXJZWF\nc8t82baaxvAzEtipVL8hz1ydZ7XZMo2SGGRTI+xexr8QwL56/XXIrMx23sus\nK/OuSWkylSTYqEdjzUmAZokF++KI2ZFkP6b41VNBVzwsV/ba/fcxGRiT3xRf\nXU4Xa5NoMJ16Xdbmrjf+fucjP3fMaJ5tU99C84evBnXUDdE2IEgnuVXMBNt0\n2IyAgi2Q3ksSSC05R+2TBaTZ2PrhrTCs85jGCcjB+pURXB1JbuPY3IbpbkEw\n/sQjkIMTPMM5A3uBNu/hQ+HCafo0mKT6k9FE7s4sev+sS6S+3Xvq5QhflIQ8\nNaIQxLkxXvM+4tyc+uxotWmNbpkdQkuhqId4Et7uQyo0LPtZR3FrZtNpInFD\nv+ViCQ4RqKX4o48qV1cyxF8T4f8H6epX89/oy7enPdTh0v7If2FLAwRjT8ox\nQBJ6eUj0zAL8F74NpepSkNOQyFzI14xuPGUoTpp0DPSEAlxi4hEealoSmNQI\n3ZYM\r\n=mc46\r\n-----END PGP SIGNATURE-----\r\n' },
+38 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
+38 silly install resolved     directories: {},
+38 silly install resolved     _npmOperationalInternal:
+38 silly install resolved      { host: 's3://npm-registry-packages',
+38 silly install resolved        tmp: 'tmp/yarn_1.12.3_1541609564624_0.013962794415718127' },
+38 silly install resolved     _hasShrinkwrap: false,
+38 silly install resolved     readme: 'ERROR: No README data found!' } ]
+39 info install yarn@1.12.3 into /usr/lib
+40 info installOne yarn@1.12.3
+41 verbose installOne of yarn to /usr/lib not in flight; installing
+42 verbose correctMkdir /home/smart/.npm/_locks correctMkdir not in flight; initializing
+43 verbose lock using /home/smart/.npm/_locks/yarn-2c7ecc5d16f3d756.lock for /usr/lib/node_modules/yarn
+44 silly install write writing yarn 1.12.3 to /usr/lib/node_modules/yarn
+45 verbose unbuild lib/node_modules/yarn
+46 silly gentlyRm /usr/lib/node_modules/yarn is being purged from base /usr
+47 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/yarn
+48 verbose tar unpack /home/smart/.npm/yarn/1.12.3/package.tgz
+49 verbose tar unpacking to /usr/lib/node_modules/yarn
+50 silly gentlyRm /usr/lib/node_modules/yarn is being purged
+51 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/yarn
+52 silly gunzTarPerm modes [ '775', '664' ]
+53 error tar.unpack untar error /home/smart/.npm/yarn/1.12.3/package.tgz
+54 verbose unlock done using /home/smart/.npm/_locks/yarn-2c7ecc5d16f3d756.lock for /usr/lib/node_modules/yarn
+55 verbose fstream_path /usr/lib/node_modules/yarn
+56 verbose fstream_type Directory
+57 verbose fstream_class DirWriter
+58 verbose stack Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/yarn'
+58 verbose stack     at Error (native)
+59 verbose fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25
+59 verbose fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53
+59 verbose fstream_stack FSReqWrap.oncomplete (fs.js:82:15)
+60 verbose cwd /var/www/k-speas.jp/public_html/call
+61 error Linux 2.6.32-696.30.1.el6.x86_64
+62 error argv "/usr/bin/node" "/usr/bin/npm" "install" "-g" "yarn"
+63 error node v4.9.1
+64 error npm  v2.15.11
+65 error path /usr/lib/node_modules/yarn
+66 error code EACCES
+67 error errno -13
+68 error syscall mkdir
+69 error Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/yarn'
+69 error     at Error (native)
+69 error  { [Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/yarn']
+69 error   errno: -13,
+69 error   code: 'EACCES',
+69 error   syscall: 'mkdir',
+69 error   path: '/usr/lib/node_modules/yarn',
+69 error   fstream_type: 'Directory',
+69 error   fstream_path: '/usr/lib/node_modules/yarn',
+69 error   fstream_class: 'DirWriter',
+69 error   fstream_stack:
+69 error    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25',
+69 error      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53',
+69 error      'FSReqWrap.oncomplete (fs.js:82:15)' ] }
+70 error Please try running this command again as root/Administrator.
+71 verbose exit [ -13, true ]
+72 verbose unbuild lib/node_modules/yarn
+73 silly gentlyRm /usr/lib/node_modules/yarn is being purged from base /usr
+74 verbose gentlyRm don't care about contents; nuking /usr/lib/node_modules/yarn

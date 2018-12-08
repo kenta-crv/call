@@ -49,9 +49,9 @@
           </tr>
           <tr>
             <th>期間</th>
-            <td><%= f.search_field :date_first, type: "date" %></td>
+            <td><%= f.search_field :updated_at_gteq, type: "date" %></td>
             <th>期間</th>
-            <td><%= f.search_field :date_last, type: "date" %></td>
+            <td><%= f.search_field :updated_at_lteq, type: "date" %></td>
           </tr>
           <tr>
             <th colspan = "4" ><%= f.submit '検索' %></th>
@@ -64,28 +64,31 @@
 <div  class="heading"><h2>コールリスト</h2></div>
           <table width ="90%">
               <tbody>
-                   <col width="30%">
-                   <col width="17%">
-                   <col width="18%">
                    <col width="25%">
-                   <col width="10%">
+                   <col width="12%">
+                   <col width="25%">
+                   <col width="15%">
+                   <col width="15%">
+                   <col width="8%">
                 <tr>
                   <th>会社名</th>
-                  <th>代表者名</th>
                   <th>電話番号</th>
+                  <th>住所</th>
+                  <th>ステータス</th>
                   <th>最終更新日</th>
                   <th>編集/削除</th>
                 </tr>
     <% @posts.each do |post| %>
                 <tr>
                   <td><%= link_to post.company, post_path(post) %> </td>
-                  <td><%= link_to post.owner, post_path(post) %></td>
                   <td><%= post.tel %></td>
-                  <td><%= post.created_at %></td>
+                  <td><%= post.address %></td>
+                  <td><%= post.details.order('statu DESC').first.try(:statu) %></td>
+                  <td><%= post.details.order('updated_at DESC').first.try(:updated_at) %></td>
                   <td><%= link_to '編集', edit_post_path(post), class: 'command'%>
-                  <%= link_to '削除', 
-                    post_path(post), 
-                    method: :delete, 
+                  <%= link_to '削除',
+                    post_path(post),
+                    method: :delete,
                     class: 'command',
                     data: { confirm: '本当に削除しますか？'} %></td>
                     <% end %>
@@ -96,11 +99,11 @@
                   </th>
                 </tr>
               </tbody>
-            </table>      
+            </table>
 
 </br>
 <div  class="heading"><h2>インポート</h2></div>
- 
+
    <%= form_tag import_posts_path, multipart: true do %>
    <table width="90%">
      <tbody>

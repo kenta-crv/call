@@ -85,18 +85,16 @@
                 <tr>
                   <th>会社名</th>
                   <th>電話番号</th>
-                  <th>メール</th>
                   <th>ステータス</th>
-                  <th>営業日時</th>
+                  <th>最終更新日</th>
                   <th>編集/削除</th>
                 </tr>
 <% @sfas.each do |sfa| %>
                 <tr>
                   <td><%= link_to sfa.company, sfa_path(sfa) %> </td>
                   <td><%= sfa.tel %></td>
-                  <td><%= sfa.mail %></td>
-                  <td><%= sfa.status %></td>
-                  <td><%= sfa.sales_day %></td>
+                  <td><%= sfa.comments.order('statu').first.try(:statu) %></td>
+                  <td><%= sfa.comments.order('updated_at DESC').first.try(:updated_at) %></td>
                   <td><%= link_to '編集', edit_sfa_path(sfa), class: 'command'%>
                   <%= link_to '削除', 
                     sfa_path(sfa), 
@@ -106,8 +104,8 @@
                     <% end %>
                 </tr>
                 <tr>
-                  <th colspan = "6">
-    
+                  <th colspan = "5">
+                  前のページ<%= paginate @sfas %>次のページ
                   </th>
                 </tr>
               </tbody>

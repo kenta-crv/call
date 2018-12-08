@@ -1,8 +1,7 @@
 class SfasController < ApplicationController
   def index
     @q = Sfa.ransack(params[:q])
-  	#@sfas = @q.result.page(params[:page].per(100))
-  	@sfas = Sfa.all.order(created_at: 'desc')
+  	@sfas = @q.result.page(params[:page]).per(100)
   end
   
   def show
@@ -28,7 +27,7 @@ class SfasController < ApplicationController
   
   def update 
   	@sfa = Sfa.find(params[:id])
-  	if @sfa.update(sfa_prams)
+  	if @sfa.update(sfa_params)
   		redirect_to sfas_path
   	else
   		render 'edit'
@@ -44,7 +43,7 @@ class SfasController < ApplicationController
   def import
   # fileはtmpに自動で一時保存される
     Sfa.import(params[:file])
-    redirect_to root_url, notice: "リストを追加しました。"
+    redirect_to sfas_url, notice: "リストを追加しました。"
   end
   
   private

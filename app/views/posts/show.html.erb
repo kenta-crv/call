@@ -11,7 +11,7 @@
 		<col width="30%">
 	<tbody>
 		<tr>
-			<th colspan="4">顧客情報</th>
+			<th colspan="4">顧客情報（<%= link_to("編集", edit_post_path) %>）</th>
 		</tr>
 		<tr>
 			<th>会社名</th>
@@ -39,9 +39,11 @@
 		</tr>
 		<tr>
 			<th>メール</th>
-			<td><%= @post.mail %></td>
+			<td colspan="3"><%= @post.mail %></td>
+		</tr>
+		<tr>
 			<th>URL</th>
-			<td><%= @post.url %></td>
+			<td colspan="3"><%= @post.url %></td>
 		</tr>
 		<tr>
 			<th>人数</th>
@@ -51,7 +53,11 @@
 		</tr>
 		<tr>
 			<th>住所1</th>
-			<td colspan="3"></td>
+			<td colspan="3"><%= @post.address %></td>
+		</tr>
+		<tr>
+			<th>履歴</th>
+			<td colspan="3"><%= @post.history %></td>
 		</tr>
 	</tbody>
 </table>		
@@ -113,9 +119,13 @@
         			<button id="button-hangup" data-number="<%= @post.tel %>">切断</button>
         	</th>
 		</tr>
+	</tbody>
+</table>
+<%= form_for ([@post, @post.details.build]) do |f| %>
+<table>
+	<tbody>
 		<tr>
 			<th colspan="4">情報入力</th>
-			<%= form_for ([@post, @post.details.build]) do |f| %>
 		</tr>
 		<tr>
 			<th>ステータス</th>
@@ -141,7 +151,7 @@
 			<td colspan ="4"><%= f.text_area :comment %></td>
 		</tr>
 		<tr>
-			<th colspan ="4"><%=f.submit%></th>
+			<th colspan ="4"><%= f.submit %></th>
 		</tr>
 	</tbody>
 </table>
@@ -179,6 +189,3 @@
 </table>
 <% end %>
 </div>
-
-<script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.4/twilio.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

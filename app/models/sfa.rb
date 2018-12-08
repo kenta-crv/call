@@ -1,6 +1,11 @@
 class Sfa < ApplicationRecord
-	    has_many :comments
-	    
+	has_many :comments
+	
+	validates :company, presence: true
+	validates :owner, presence: true
+	validates :tel, presence: true
+	validates :address, presence: true
+	
 	def self.import(file)
 		CSV.foreach(file.path, headers:true)do |row|
 		sfa = find_by(id: row["id"]) || new
@@ -10,16 +15,9 @@ class Sfa < ApplicationRecord
 	end
 	
 	def self.updatable_attributes
-   		["company", "owner", "tel", "address"]
+   		["company", "store", "owner", "kana", "person", "p_kana","tel", "tel2", "fax", "industry", "mail", "url", "people", "post_number", "address", "employment", "social", "appointer", "sales_staff", "sales_day", "status", "target", "sales_forecast", "impression", "repeat_sales", "next_sales", "ditails", "examination"]
    	end
    	
-   	def self.search(search)
-   		if search
-   			Sfa.where(['company LIKE ?', "%#{company}%"])
-   		else
-   			Sfa.all
-   		end
-   	end
    	
    	def next_sfa
     	Sfa.where("id > ?", id).first

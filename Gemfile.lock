@@ -63,6 +63,8 @@ GEM
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       xpath (~> 3.1)
+    chart-js-rails (0.1.6)
+      railties (> 3.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.2.2)
@@ -257,6 +259,7 @@ DEPENDENCIES
   bootsnap
   byebug
   capybara (>= 2.15, < 4.0)
+  chart-js-rails (~> 0.1.4)
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
@@ -281,4 +284,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.4
+   1.17.1
