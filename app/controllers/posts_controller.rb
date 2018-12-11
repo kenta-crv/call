@@ -51,6 +51,7 @@ def import
   redirect_to root_url, notice: "リストを追加しました。"
 end
 
+
   private
     def post_params
       params.require(:post).permit(
