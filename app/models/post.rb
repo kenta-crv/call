@@ -17,6 +17,13 @@
 
 class Post < ApplicationRecord
     has_many :details
+    
+    #TPD
+    #2018.12.14
+    # 最終Detail
+    has_one :last_detail, ->{
+      order("created_at desc")
+    }, class_name: :Detail
 
    validates :company, presence: true
    validates :tel, presence: true

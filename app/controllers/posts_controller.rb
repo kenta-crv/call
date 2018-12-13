@@ -4,8 +4,28 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    
+    #TPD
+    #2018.12.14 TPD
+    # Detail/last_created に対しての条件抽出してpost_idリスト生成
+    last_detail_post_ids = nil
+    @last_detail_params = {}
+    if !params[:last_detail].blank?
+      @last_detail_params = params[:last_detail]
+      last_detail = Detail.joins_last_detail
+      last_detail = last_detail.where(statu: @last_detail_params[:statu]) if !@last_detail_params[:statu].blank?
+      last_detail = last_detail.where("details.created_at >= ?", @last_detail_params[:created_at_from]) if !@last_detail_params[:created_at_from].blank?
+      last_detail = last_detail.where("details.created_at <= ?", @last_detail_params[:created_at_to]) if !@last_detail_params[:created_at_to].blank?
+      last_detail_post_ids = last_detail.pluck(:post_id)
+    end
+    
     @q = Post.ransack(params[:q])
-    @posts = @q.result.page(params[:page]).per(100)
+    @posts = @q.result
+    #TPD
+    #2018.12.14
+    # Detail 条件抽出したpost_id のみを検索対象にする
+    @posts = @posts.where( id: last_detail_post_ids )  if !last_detail_post_ids.nil?
+    @posts = @posts.page(params[:page]).per(100)
   end
 
   def show

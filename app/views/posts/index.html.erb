@@ -47,11 +47,31 @@
             <th>住所</th>
             <td><%= f.search_field :address_cont, type: "text" %></td>
           </tr>
+          <!-- #TPD #2018.12.14 -->
           <tr>
-            <th>期間</th>
-            <td><%= f.search_field :updated_at_gteq %></td>
-            <th>期間</th>
-            <td><%= f.search_field :updated_at_lteq %></td>
+            <th>最終コール状態</th>
+            <td><%= select_tag "last_detail[statu]", options_for_select( [""] + Detail.StatuItems, @last_detail_params[:statu] ) %></td>
+            <th></th>
+            <td></td>
+          </th>
+          <tr>
+            <th>最終コール日時</th>
+            <td colspan="3">
+              <div class='input-group date' id='created_at_from_datetimepicker'>
+                    <%= text_field_tag "last_detail[created_at_from]", @last_detail_params[:created_at_from], class: "form-control" %>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+               </div>
+              <div class='input-group date' id='created_at_to_datetimepicker'>
+                    <%= text_field_tag "last_detail[created_at_to]", @last_detail_params[:created_at_to], class: "form-control" %>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+               </div>
+                <%# text_field_tag "last_detail[created_at_from]", @last_detail_params[:created_at_from], class: "datetimepicker" %>
+                <%# text_field_tag "last_detail[created_at_to]", @last_detail_params[:created_at_to], class: "datetimepicker" %>
+            </td>
           </tr>
           <tr>
             <th colspan = "4" ><%= f.submit '検索' %></th>
@@ -59,6 +79,29 @@
         <% end %>
       </tbody>
     </table>
+
+<script>
+/*
+* #TPD
+* #2018.12.14
+* bootstrap DateTImePicker 設定 #2018.12.14
+*/
+$(function () {
+  $('#created_at_from_datetimepicker').datetimepicker({
+    format: 'YYYY-MM-DD hh:mm'
+  });
+  $('#created_at_to_datetimepicker').datetimepicker({
+    format: 'YYYY-MM-DD hh:mm',
+    useCurrent: false //Important! See issue #1075
+  });
+  $("#created_at_from_datetimepicker").on("dp.change", function (e) {
+    $('#created_at_to_datetimepicker').data("DateTimePicker").minDate(e.date);
+  });
+  $("#created_at_to_datetimepicker").on("dp.change", function (e) {
+    $('#created_at_from_datetimepicker').data("DateTimePicker").maxDate(e.date);
+  });
+});
+</script>
 
 </br>
 <div  class="heading"><h2>コールリスト</h2></div>
@@ -83,8 +126,14 @@
                   <td><%= link_to post.company, post_path(post) %> </td>
                   <td><%= post.tel %></td>
                   <td><%= post.address %></td>
-                  <td><%= post.details.order('statu DESC').first.try(:statu) %></td>
-                  <td><%= post.details.order('updated_at DESC').first.try(:updated_at) %></td>
+                  <td>
+                    <%# post.details.order('statu DESC').first.try(:statu) %>
+                    <%= post.last_detail.try(:statu) %>
+                  </td>
+                  <td>
+                    <%# post.details.order('updated_at DESC').first.try(:updated_at) %>
+                    <%= post.last_detail.try(:created_at) %>
+                  </td>
                   <td><%= link_to '編集', edit_post_path(post), class: 'command'%>
                   <%= link_to '削除',
                     post_path(post),
