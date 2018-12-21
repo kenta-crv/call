@@ -51,18 +51,21 @@
           <tr>
             <th>最終コール状態</th>
             <td><%= select_tag "last_detail[statu]", options_for_select( [""] + Detail.StatuItems, @last_detail_params[:statu] ) %></td>
-            <th></th>
+            <th>再コール日時</th>
             <td></td>
           </th>
           <tr>
-            <th>最終コール日時</th>
-            <td colspan="3">
+            <th>最終コール日時（最初）</th>
+            <td>
               <div class='input-group date' id='created_at_from_datetimepicker'>
                     <%= text_field_tag "last_detail[created_at_from]", @last_detail_params[:created_at_from], class: "form-control" %>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                </div>
+             </td>
+             <th>最終コール日時（最後）</th>
+            <td>
               <div class='input-group date' id='created_at_to_datetimepicker'>
                     <%= text_field_tag "last_detail[created_at_to]", @last_detail_params[:created_at_to], class: "form-control" %>
                     <span class="input-group-addon">

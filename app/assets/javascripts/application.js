@@ -16,10 +16,6 @@
 // #TPD
 // #2018.12.14
 // bootstrap 設定
-//= require bootstrap-sprockets
-//= require moment
-//= require moment/ja
-//= require bootstrap-datetimepicker
 //
 //= require_tree .
 

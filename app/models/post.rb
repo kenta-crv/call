@@ -36,6 +36,9 @@ class Post < ApplicationRecord
         post = find_by(id: row["id"]) || new
         # CSVからデータを取得し、設定する
         post.attributes = row.to_hash.slice(*updatable_attributes)
+        
+        next if self.where(tel: post.tel).count > 0
+        
         # 保存する
         post.save!
        end

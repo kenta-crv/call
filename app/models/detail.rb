@@ -11,7 +11,6 @@ class Detail < ApplicationRecord
     ).group(:post_id)
   }  
   
-  
   #TPD
   #2018.12.14
   # ステータスリスト

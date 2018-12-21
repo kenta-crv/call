@@ -170,7 +170,12 @@
 			<td><%= detail.statu %></td>
 			<td><%= detail.time %></td>
 			<td><%= detail.comment %></td>
-			<td></td>
+			<td><%= link_to '編集', edit_post_detail_path(@post), class: 'command'%>
+			<%= link_to '削除', 
+			            	post_detail_path(@post,@detail) ,
+			            	method: :delete, 
+			            	class: 'command',
+			            	data: { confirm: '本当に削除しますか？'} %></td>
 		</tr>
 <% end %>
 </table>

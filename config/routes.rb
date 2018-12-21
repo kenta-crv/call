@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
-
-  root 'posts#index'
+  get '/' => 'posts#index'
   devise_for :users
   get 'products/index'
 
   resources :posts do
-    # member do
-    #   post :call
-    # end
         resources :details
-        
     collection do
       post :import
       get :message

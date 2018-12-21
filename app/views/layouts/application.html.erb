@@ -23,8 +23,9 @@
     <div class="header">
 <div class="header-list">
 <%= link_to  'ホーム', '/' %>
-<%= link_to  '新規作成', '/posts/new' %>
+<%= link_to  'コール新規', '/posts/new' %>
 <%= link_to  'SFA', '/sfas' %>
+<%= link_to  'APP新規', '/sfas/new' %>
 <%= link_to  'カレンダー', 'https://calendar.google.com/calendar/r?hl=ja&pli=1&t=AKUaPmZ7YsUtf37GigsEpOWobWTSjJJrKm1ZaCepbwU57lG1uZAnLtvwbRgvfHeyrSb7g3Jf4ySq2jQ12y2MosPKQtRqmp2H-Q%3D%3D', :target=>["_blank"] %>
     <% if user_signed_in? %>
         <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>

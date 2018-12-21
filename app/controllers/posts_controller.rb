@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    
     #TPD
     #2018.12.14 TPD
     # Detail/last_created に対しての条件抽出してpost_idリスト生成
