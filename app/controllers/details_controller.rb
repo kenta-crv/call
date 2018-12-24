@@ -22,8 +22,8 @@ class DetailsController < ApplicationController
 	end    
 
 	def create
-	  @post = Post.find(params[:post_id])
-	  @post.details.create(detail_params)
+	  @detail = Detail.build
+	  if  @post.details.create(detail_params)
 	  redirect_to post_path(@post)
 	end
 

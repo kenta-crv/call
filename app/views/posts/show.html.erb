@@ -121,7 +121,7 @@
 		</tr>
 	</tbody>
 </table>
-<%= form_for ([@post, @post.details.build]) do |f| %>
+<%= form_for ([@post, @detail]) do |f| %>
 <table>
 	<tbody>
 		<tr>
@@ -172,7 +172,7 @@
 			<td><%= detail.comment %></td>
 			<td><%= link_to '編集', edit_post_detail_path(@post), class: 'command'%>
 			<%= link_to '削除', 
-			            	post_detail_path(@post,@detail) ,
+			            	post_detail_path(@post,detail) ,
 			            	method: :delete, 
 			            	class: 'command',
 			            	data: { confirm: '本当に削除しますか？'} %></td>
