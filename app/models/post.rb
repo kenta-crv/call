@@ -17,7 +17,7 @@
 
 class Post < ApplicationRecord
     has_many :details
-    
+
     #TPD
     #2018.12.14
     # 最終Detail
@@ -36,9 +36,9 @@ class Post < ApplicationRecord
         post = find_by(id: row["id"]) || new
         # CSVからデータを取得し、設定する
         post.attributes = row.to_hash.slice(*updatable_attributes)
-        
+
         next if self.where(tel: post.tel).count > 0
-        
+
         # 保存する
         post.save!
        end
@@ -47,8 +47,6 @@ class Post < ApplicationRecord
     def self.updatable_attributes
     		["company", "store", "owner","kana", "tel", "tel2","fax", "industry", "address", "mail", "url", "people", "history"]
   	end
-  	
-
 
   def next_post
     Post.where("id > ?", id).first

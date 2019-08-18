@@ -1,25 +1,25 @@
 class DetailsController < ApplicationController
   before_action :load_post
   before_action :load_detail, only: [:edit,:update,:show,:destroy]
-  
+
   def load_post
     @post = Post.find(params[:post_id])
   end
-  
+
   def load_detail
     @detail = Detail.find(params[:id])
   end
-  
+
   def edit
   end
-  
+
 	def update
 	  if @detail.update(detail_params)
 	    redirect_to post_path(@post)
 	  else
 	    render 'edit'
 	  end
-	end    
+	end
 
 	def create
 	  @detail = Detail.build
@@ -34,7 +34,7 @@ class DetailsController < ApplicationController
 		redirect_to post_path(@post)
 	end
 
-		private
+ private
 	def detail_params
 		params.require(:detail).permit(
 		:statu, #ステータス
